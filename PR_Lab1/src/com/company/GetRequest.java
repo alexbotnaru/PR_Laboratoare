@@ -34,12 +34,6 @@ public class GetRequest {
         printWriter.print("\r\n");
         printWriter.flush();
 
-        try {
-            this.socket.shutdownOutput();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         while((outStr = bufferedReader.readLine()) != null){
             response += outStr + "\n";
         }
