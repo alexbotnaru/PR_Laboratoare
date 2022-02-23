@@ -18,7 +18,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
-        String responseString = "";
 
         System.out.println("Where to download the images from?");
         System.out.println("me.utm.md        [1]");
@@ -123,12 +122,6 @@ public class Main {
             }
         });
         allImages.clear();
-        //            if (image.startsWith("http://")) {
-//                allImagesLinks.add(image);
-//            } else if (!image.startsWith("//counter")) {
-//                allImagesLinks.add("http://me.utm.md/" + image);
-//
-//            }
 
         return allImagesLinks;
     }
@@ -144,6 +137,5 @@ public class Main {
         }
     }
 }
-// <img([\w\W]+?)>
+
 // <img\s+[^>]*src="([^"]*)"[^>]*>
-//30 img
