@@ -124,4 +124,3 @@ public class Main {
     }
 }
 
-// <img\s+[^>]*src="([^"]*)"[^>]*>
