@@ -1,27 +1,20 @@
 package com.company;
 
-import javax.net.SocketFactory;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+
 import java.io.*;
 import java.net.MalformedURLException;
-import java.net.Socket;
 import java.net.URL;
 import java.util.concurrent.Semaphore;
 
 public class ImageDownloadTask implements Runnable {
-    private String urlString;
-    private File path;
+    private String link;
     private String writeTo;
     private Semaphore semaphore;
-    private Integer port;
 
-    public ImageDownloadTask(String urlString, Semaphore semaphore, String suffix, Integer port) {
-        this.path = new File("C:\\Users\\Olexei\\IdeaProjects\\PR_Lab1\\images" + suffix);
-        this.urlString = urlString;
+    public ImageDownloadTask(String link, Semaphore semaphore, String suffix) {
+        this.link = link;
         this.semaphore = semaphore;
-        this.writeTo = path.toPath().toString() + "\\" + urlString.substring(urlString.lastIndexOf("/"), urlString.length());
-        this.port = port;
+        this.writeTo = "./images" + suffix + "\\" + link.substring(link.lastIndexOf("/"), link.length());
     }
 
     @Override
@@ -29,13 +22,8 @@ public class ImageDownloadTask implements Runnable {
 
         URL url = null;
         try {
-            url = new URL(urlString);
+            url = new URL(link);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        try {
-            semaphore.acquire();
-        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -44,9 +32,11 @@ public class ImageDownloadTask implements Runnable {
             InputStream inputStream = url.openStream();
             OutputStream outputStream = new FileOutputStream(writeTo);
 
+            semaphore.acquire();
+
             byte[] buffer = new byte[2048];
             int length = 0;
-            System.out.println("\nDownloading from: " + urlString);
+            System.out.println("\nDownloading from: " + link);
             System.out.println("This is thread: " + Thread.currentThread().getName());
 
             while ((length = inputStream.read(buffer)) != -1) {
@@ -54,10 +44,13 @@ public class ImageDownloadTask implements Runnable {
             }
             inputStream.close();
             outputStream.close();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         semaphore.release();
+
+    }
+}
 //        try {
 //
 //            Socket socket = getNewSocket();
@@ -119,21 +112,21 @@ public class ImageDownloadTask implements Runnable {
 //            System.out.println(e);
 //        }
 
-    }
 
-    public Socket getNewSocket() throws IOException {
 
-        if (this.port == 80) {
-            SocketFactory socketFactory = (SocketFactory) javax.net.SocketFactory.getDefault();
-            return (Socket) socketFactory.createSocket("me.utm.md", port);
-        } else if (this.port == 443) {
-            SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-            SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createSocket("utm.md", port);
-            sslSocket.startHandshake();
-            return sslSocket;
-        }
+//    public Socket getNewSocket() throws IOException {
+//
+//        if (this.port == 80) {
+//            SocketFactory socketFactory = (SocketFactory) javax.net.SocketFactory.getDefault();
+//            return (Socket) socketFactory.createSocket("me.utm.md", port);
+//        } else if (this.port == 443) {
+//            SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+//            SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createSocket("utm.md", port);
+//            sslSocket.startHandshake();
+//            return sslSocket;
+//        }
+//
+//        return null;
+//    }
 
-        return null;
-    }
 
-}

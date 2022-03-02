@@ -27,6 +27,7 @@ public class Main {
 
         if (answer == 1) {
             String host = "me.utm.md";
+            String suffix = "_me_utm";
             int port = 80;
 
             SocketFactory SocketFactory = (SocketFactory) javax.net.SocketFactory.getDefault();
@@ -34,65 +35,51 @@ public class Main {
 
             GetRequest getRequest = new GetRequest(socket, host);
             String response = getRequest.sendGetRequest();
+
             Set<String> imageLinks = filterResposne(response);
-            System.out.println(imageLinks);
 
-            ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
-            final Semaphore semaphore = new Semaphore(2);
-
-            ArrayList<Runnable> taskList = new ArrayList<>();
-
-            for (String link : imageLinks) {
-
-                Runnable task = new ImageDownloadTask(link, semaphore, "_me_utm", port);
-                taskList.add(task);
-            }
-
-            for (Runnable task : taskList) {
-                executor.execute(task);
-            }
-            executor.shutdown();
-
-            printFinalMessage(executor);
+            startDownload(imageLinks, suffix);
 
 
         } else if (answer == 2) {
             String host = "utm.md";
+            String suffix = "_utm";
             int port = 443;
 
             SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-            try {
-                SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createSocket(host, port);
-                sslSocket.startHandshake();
 
-                GetRequest getRequest = new GetRequest(sslSocket, host);
-                String response = getRequest.sendGetRequest();
+            SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createSocket(host, port);
+            sslSocket.startHandshake();
 
-                Set<String> imageLinks = filterResposne(response);
-                System.out.println(imageLinks);
+            GetRequest getRequest = new GetRequest(sslSocket, host);
+            String response = getRequest.sendGetRequest();
 
-                ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
-                final Semaphore semaphore = new Semaphore(2);
+            Set<String> imageLinks = filterResposne(response);
 
-                ArrayList<Runnable> taskList = new ArrayList<>();
+            startDownload(imageLinks, suffix);
 
-                for (String link : imageLinks) {
-
-                    Runnable task = new ImageDownloadTask(link, semaphore, "_utm", port);
-                    taskList.add(task);
-                }
-
-                for (Runnable task : taskList) {
-                    executor.execute(task);
-                }
-                executor.shutdown();
-
-                printFinalMessage(executor);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
+
+    }
+
+    private static void startDownload(Set<String> imageLinks, String suffix) {
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
+        final Semaphore semaphore = new Semaphore(2);
+
+        List<Runnable> taskList = new LinkedList<>();
+
+        for (String link : imageLinks) {
+
+            Runnable task = new ImageDownloadTask(link, semaphore, suffix);
+            taskList.add(task);
+        }
+
+        for (Runnable task : taskList) {
+            executor.execute(task);
+        }
+        executor.shutdown();
+
+        printFinalMessage(executor);
 
     }
 
@@ -105,8 +92,6 @@ public class Main {
         while (matcher.find()) {
             allImages.add(matcher.group(1));
         }
-
-        System.out.println("all Images: "+allImages);
 
         Set<String> allImagesLinks = new HashSet<>();
         allImages.forEach((image) -> {
@@ -125,7 +110,8 @@ public class Main {
 
         return allImagesLinks;
     }
-    public static void printFinalMessage(ThreadPoolExecutor executor){
+
+    public static void printFinalMessage(ThreadPoolExecutor executor) {
         try {
             if (executor.awaitTermination(5, TimeUnit.MINUTES)) {
                 System.out.println("\n********** Download completed successfully! **********");
