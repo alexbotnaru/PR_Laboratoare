@@ -1,0 +1,17 @@
+
+U
+java:S1118
+":Add a private constructor to hide the implicit public one.(¢ùÔáüÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(“ûÌÙùÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(‚›Ö˜
+S	java:S106"9Replace this use of System.out or System.err by a logger.(×Œíßÿÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(‡û“¿ùÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ÇÎÏÀ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¶Äùæ
+W
+java:S3252'":Use static access with "javax.mail.Part" for "ATTACHMENT".( —ô8Ì¬‹0
+S	java:S106("9Replace this use of System.out or System.err by a logger.(ÒÈ‰şüÿÿÿÿ
+S	java:S106+"9Replace this use of System.out or System.err by a logger.(Ï„ãÑşÿÿÿÿ
+M	java:S106-"9Replace this use of System.out or System.err by a logger.(¹ø
+P
+java:S1191"5Use classes from the Java API instead of Sun classes.(È¿¥Ëûÿÿÿÿ
