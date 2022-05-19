@@ -1,0 +1,15 @@
+
+`	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(İÏÈÚûÿÿÿÿ
+z
+java:S1450	"_Remove the "dataOutputStream" field and declare it as a local variable in the relevant methods.(×„Ã“ûÿÿÿÿ
+Q
+java:S2696"6Make the enclosing method "static" or remove this set.(•¡ùÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ë‹†ùÿÿÿÿ
+S	java:S106""9Replace this use of System.out or System.err by a logger.(ïĞÔûÿÿÿÿ
+N	java:S1064"9Replace this use of System.out or System.err by a logger.(½ğ’
+Z	java:S106:"9Replace this use of System.out or System.err by a logger.(áïµúÿÿÿÿ8ÅÿŸ´0
+z	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ8´”ü²0
+0
+java:S1220""Move this file to a named package.
+i
+java:S20951"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(«§» øÿÿÿÿ

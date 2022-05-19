@@ -1,0 +1,17 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(§Æ¶µ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(€¢£Áÿÿÿÿÿ
+N	java:S106-"9Replace this use of System.out or System.err by a logger.(§Æ¶µ
+S	java:S106."9Replace this use of System.out or System.err by a logger.(€¢£Áÿÿÿÿÿ
+S	java:S106:"9Replace this use of System.out or System.err by a logger.(ŽÞ”ôøÿÿÿÿ
+s
+java:S3457<"Q%n should be used in place of \n to produce the platform-specific line separator.(£’ßøÿÿÿÿ8â€˜‹0
+S	java:S106<"9Replace this use of System.out or System.err by a logger.(£’ßøÿÿÿÿ
+s
+java:S3457I"Q%n should be used in place of \n to produce the platform-specific line separator.(æì–ýÿÿÿÿ8¡¹™‹0
+Z	java:S106I"9Replace this use of System.out or System.err by a logger.(æì–ýÿÿÿÿ8­ž–0
+n
+java:S1192"QDefine a constant instead of duplicating this literal "application/json" 4 times.(ƒÆêµ8ÖÇÂ‹0
+d
+java:S1192"GDefine a constant instead of duplicating this literal "accept" 4 times.(ƒÆêµ8×ÇÂ‹0
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëî­–ùÿÿÿÿ

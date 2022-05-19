@@ -1,0 +1,18 @@
+
+`	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(±ğØäüÿÿÿÿ
+y
+java:S1450"^Remove the "dataInputStream" field and declare it as a local variable in the relevant methods.(Ó€’Æşÿÿÿÿ
+}
+java:S4087"bRemove this "close" call; closing the resource is handled automatically by the try-with-resources.(Ûæ•øûÿÿÿÿ
+S
+java:S2696"6Make the enclosing method "static" or remove this set.(Î«æì8ÛÔÄ±0
+X
+java:S2696"6Make the enclosing method "static" or remove this set.(•¡ùÿÿÿÿ8âÔÄ±0
+N	java:S106"9Replace this use of System.out or System.err by a logger.(©‰˜¥
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ŒàÕšøÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ô‘Ó×
+S	java:S106'"9Replace this use of System.out or System.err by a logger.(ŒàÕšøÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+c
+java:S20952"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(†š­î

@@ -1,0 +1,10 @@
+
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ÿŞñÏÿÿÿÿÿ8Õş©²0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.( ˜šöùÿÿÿÿ8×ş©²0
+V
+java:S1068	"4Remove this unused "dataOutputStream" private field.(”™£êıÿÿÿÿ8×ş©²0
+U
+java:S1068
+"3Remove this unused "dataInputStream" private field.(Ó€’Æşÿÿÿÿ8×ş©²0
+0
+java:S1220""Move this file to a named package.
